@@ -20,7 +20,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "start": "electron js",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
+    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion",
+    "postinstall": "npm outdated && gulp"
   },
   "files": [
     "src/index.js",
