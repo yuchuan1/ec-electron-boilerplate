@@ -18,11 +18,11 @@ var excludeGitignore = require('gulp-exclude-gitignore');
 var del = require('del');
 
 gulp.task('process-html', function () {
-  return gulp.src('src/views/**/*.html')
+  return gulp.src('src/html/**/*.html')
     .pipe(excludeGitignore())
     .pipe(htmllint({}, htmllintReporter))
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest('views'));
+    .pipe(gulp.dest('html'));
 });
 
 gulp.task('process-css', function () {
@@ -57,8 +57,9 @@ gulp.task('nsp', function (cb) {
   nsp({ package: path.resolve('package.json') }, cb);
 });
 
-gulp.task('clean', function () {
-  return del(['js', 'views', 'css']);
+gulp.task('clean', function (cb) {
+  del.sync(['js', 'html', 'css']);
+  cb();
 });
 
 function htmllintReporter(filepath, issues) {

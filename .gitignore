@@ -5,3 +5,5 @@ coverage/**
 css/**
 js/**
 views/**
+**/npm-debug.log
+html/**
